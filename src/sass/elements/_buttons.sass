@@ -10,8 +10,10 @@ button
 .btn
   display: inline-block
   position: relative
+  background: transparent
   text-align: center
-  cursor: pointer
+  cursor: pointe
+  border-radius: 0
   box-shadow: none
   transition: all $transitionSpeed $ease
   &.disabled, &[disabled]
@@ -26,16 +28,34 @@ button
     width: 100%
 
   &-primary
-    // please use paddings instead of line-height to control btn height
+    font-familty: $monsterFont
     font-weight: bold
-    font-size: 16px
-    line-height: 16px
-    background: $colorPrimary
+    font-size: 14px
+    line-height: (17 / 14)
     color: white
-    padding: 17px 25px
-    border-radius: 4px
+    text-transform: uppercase
+    padding: 7px 14px
+    span
+      position: relative
+      z-index: 2
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      z-index: 1
+      bottom: 0
+      left: 0
+      right: 0
+      height: 2px
+      background: linear-gradient(87.35deg, #8B53DA -0.82%, #FF003F 132.53%)
+      transition: height .25s $ease
     &:hover
-      background: $colorPrimary
+      color: $fontColor
+      &::after
+        height: 100%
+    &:focus, &:active
+      color: white
+
 
   &-outline
     font-weight: 500

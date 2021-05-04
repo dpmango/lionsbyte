@@ -5,24 +5,22 @@ html(lang="en")
     include _head
 
   body
-    // place where pjax bindings happen's
-    #barba-wrapper
+    .svg-sprite
+      include ../../../dist/img/sprite-color.svg
+      include ../../../dist/img/sprite-mono.svg
+
+    .page(class=outClass)
       block header
-        include ../../components/header/_header
+      include ../../components/header/_header
 
-      // what should be changed with every pjax
-      .page(class=outClass)
-        .page__content
-          block content
+      .page__content
+        block content
 
-        block footer
-          include ../../components/footer/_footer
+      block modals
+        include ../../components/modals/_shared
 
-        block modals
-          include ../../components/modals/_shared
+    block dev
+      include ../../components/dev/demoGrid/_demoGrid
 
-      block dev
-        include ../../components/dev/demoGrid/_demoGrid
-
-      block scripts
-        include _scripts
+    block scripts
+      include _scripts
