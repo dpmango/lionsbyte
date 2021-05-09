@@ -1,15 +1,15 @@
 // titles
-h1, h2, h3, h4, h5, h6
-  margin: 0
-
 .h1-title, .h2-title, .h3-title, .h4-title, .h5-title, .h6-title
-  font-weight: 700
+  font-weight: 600
 
 .h1-title
   font-size: 52px
 
 .h2-title
-  font-size: 46px
+  font-size: 48px
+  background: -webkit-linear-gradient(87.35deg, #8B53DA -0.82%, #FF003F 132.53%)
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
 
 .h3-title
   font-size: 36px
@@ -42,10 +42,32 @@ h1, h2, h3, h4, h5, h6
 
 // paragraphs
 .p-main
-  font-size: 18px
+  font-size: 24px
+  font-weight: 400
+  line-height: 1.8
 
-p + p
-  margin-top: 1em
+.p-accent
+  font-weight: 700
+  font-size: 30px
+  line-height: 1.65
+  background: -webkit-linear-gradient(87.35deg, #8B53DA -0.82%, #FF003F 132.53%)
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+
+.p-label
+  font-size: 30px
+  line-height: (35 / 30)
+  color: rgba(#FFFFFF, .7)
+
+
+p, ul, ol, blockquote, h1, h2, h3, h4, h5, h6, table
+  margin-top: 0
+  margin-bottom: 0
+  & + p, & + ul, & + ol, & + blockquote, & + table
+    margin-top: 1em
+    margin-bottom: 1em
+  & + h1, & + h2, & + h3, & + h4, & + h5, & + h6,
+    margin-top: 0.67em
 
 a
   color: inherit

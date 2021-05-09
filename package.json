@@ -48,6 +48,7 @@
     "photoswipe": "^4.1.3",
     "picturefill": "^3.0.3",
     "scroll-lock": "^2.1.4",
+    "scrollmagic": "^2.0.8",
     "scrollmonitor": "^1.2.4",
     "sharer.js": "^0.4.1",
     "surge": "^0.21.7",
