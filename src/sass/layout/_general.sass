@@ -8,8 +8,8 @@ body:not(.is-ready)
     transition: none !important
 
 body, html
-  background: white
-  color: $fontColor
+  background: #050720
+  color: white
   font-family: $baseFont
   // font-family: "Helvetica", -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Ubuntu', 'Cantarell', 'Arial', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'
   font-size: 16px
@@ -23,6 +23,15 @@ body, html
 ::selection
   color: white
   background: $colorPrimary
+
+.svg-sprite
+  position: absolute
+  left: 0
+  top: 0
+  width: 0.1px
+  height: 0.1px
+  opacity: 0
+  pointer-events: none
 
 .is-ios
   cursor: pointer
@@ -42,9 +51,34 @@ body, html
     overflow: visible
 
 .page
+  position: relative
   display: flex
   flex-direction: column
   min-height: 100vh
   &__content
     // used for sticky footer (flexbox way)
     flex: 1 0 auto
+  &__background
+    position: fixed 0
+    z-index: 1
+    display: flex
+    flex-direction: column
+    img, svg
+      flex: 1 1 auto
+      width: 100%
+      height: 100%
+      object-fit: cover
+      object-position: center center
+
+.section
+  flex: 1 0 auto
+  position: relative
+  z-index: 2
+  min-height: 100vh
+  display: flex
+  flex-direction: column
+  border-bottom: 1px solid rgba($colorRed, .5)
+  .container
+    flex: 1 0 auto
+    display: flex
+    flex-direction: column

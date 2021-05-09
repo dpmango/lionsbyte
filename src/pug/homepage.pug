@@ -4,4 +4,10 @@ title: Homepage
 extends shared/_layout
 block content
 
-  //- include ../components/folder/_file.pug
+  .scroll-magic
+    .page__background
+      include ../components/intro/background.svg
+
+    include ../components/intro/_intro.pug
+
+    include ../components/overlay/_code.pug
