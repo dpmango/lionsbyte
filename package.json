@@ -42,6 +42,7 @@
     "jquery-selectric": "^0.2.0",
     "jquery-validation": "^1.19.3",
     "lodash": "^4.17.20",
+    "lottie-web": "^5.7.8",
     "magnific-popup": "^1.1.0",
     "micromodal": "^0.4.6",
     "object-fit-images": "^3.2.4",

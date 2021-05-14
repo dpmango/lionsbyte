@@ -18,7 +18,7 @@ import ScrollToPlugin from 'gsap/ScrollToPlugin';
 import debounce from 'lodash/debounce';
 import throttle from 'lodash/throttle';
 import { disablePageScroll, enablePageScroll, clearQueueScrollLocks } from 'scroll-lock';
-
+import bodymovin from 'lottie-web';
 // uncomment plugins you want to use (i.e. from /js/__extras folder)
 
 // import scrollMonitor from 'scrollmonitor';
@@ -58,6 +58,7 @@ window.throttle = throttle;
 window.disablePageScroll = disablePageScroll;
 window.enablePageScroll = enablePageScroll;
 window.clearQueueScrollLocks = clearQueueScrollLocks;
+window.bodymovin = bodymovin;
 
 // expose commented plugins
 
