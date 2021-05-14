@@ -11,14 +11,19 @@ import mask from 'jquery-mask-plugin';
 import Lazy from 'jquery-lazy';
 // import LazyAV from 'jquery-lazy/plugins/jquery.lazy.av.min.js';
 // import LazyPicture from 'jquery-lazy/plugins/jquery.lazy.picture.min.js';
-import { TweenMax, TimelineMax, Power2 } from 'gsap/all';
+import { gsap, TweenMax, TimelineMax, Power2 } from 'gsap/all';
 import ScrollToPlugin from 'gsap/ScrollToPlugin';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 import debounce from 'lodash/debounce';
 import throttle from 'lodash/throttle';
 import { disablePageScroll, enablePageScroll, clearQueueScrollLocks } from 'scroll-lock';
 import bodymovin from 'lottie-web';
 import scrollMonitor from 'scrollmonitor';
-import scrollmagic from 'scrollmagic';
+// import ScrollMagic from 'scrollmagic';
+// import addIndicators from 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators'; //
+// import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // expose imports to window to use in app.js
 // (jquery is exposed in expose-loader)
@@ -37,8 +42,10 @@ window.mask = mask;
 
 window.Lazy = Lazy;
 window.ScrollToPlugin = ScrollToPlugin;
+window.ScrollTrigger = ScrollTrigger;
+window.gsap = gsap;
 window.TweenMax = TweenMax;
-// window.TimelineMax = TimelineMax;
+window.TimelineMax = TimelineMax;
 window.debounce = debounce;
 window.throttle = throttle;
 window.disablePageScroll = disablePageScroll;
@@ -46,4 +53,7 @@ window.enablePageScroll = enablePageScroll;
 window.clearQueueScrollLocks = clearQueueScrollLocks;
 window.bodymovin = bodymovin;
 window.scrollMonitor = scrollMonitor;
-window.scrollmagic = scrollmagic;
+// window.ScrollMagic = ScrollMagic;
+// window.addIndicators = addIndicators;
+
+// ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax);

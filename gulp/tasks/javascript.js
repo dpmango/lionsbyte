@@ -7,6 +7,7 @@ import babel from 'gulp-babel';
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
 import config from '../config';
+import path from 'path';
 
 // TODO - move to webpack.config.js
 const webpackConfig = {
@@ -21,6 +22,16 @@ const webpackConfig = {
         },
       },
     ],
+  },
+  performance: {
+    maxEntrypointSize: 4000000,
+  },
+  resolve: {
+    alias: {
+      'debug.addIndicators':
+        __dirname +
+        '/node_modules/scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js',
+    },
   },
   // some jquery plugins doesnt work with expose-loader
   // Try uncommenting below if nothing else helps

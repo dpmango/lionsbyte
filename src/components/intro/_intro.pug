@@ -1,13 +1,13 @@
 // INTRO
 .intro
-  section.section
+  section.section.section--h2(data-section="intro-first")
     .container
       .row.intro__content-wrapper
         .col.col-6(data-aos="fade-up")
-          .intro__name
+          .intro__name(data-scroll="intro-name")
             +svgColor('strong_name')
         .col.col-6(data-aos="fade-up")
-          p.p-main
+          p.p-main(data-scroll="intro-text")
             | entwickelt individuelle Softwarelösungen,
             br
             | das sind fantastisch erfolgreiche Lösungen
@@ -16,12 +16,13 @@
             br
             | Optimierung und Prozessautomatisierung.
 
-  section.section
+  section.section.section--h2(data-section="intro-second")
     .container.container--1000
       .intro__content-wrapper
-        .intro__horizontal-text(data-aos="fade-up")
-          p.p-main Unser Leitbild ist ein kühnes, modernes und benutzerfreundliches Software-Produkt zu entwickeln, das Ihnen nicht nur Ihre Ziele erreichen helfen, sondern auch Millionen Benutzern das Handling deutlich einfacher machen könnte.
+        .intro__horizontal-text
+          // TODO mask, add aos
+          p.p-main(data-scroll="intro-second-top") Unser Leitbild ist ein kühnes, modernes und benutzerfreundliches Software-Produkt zu entwickeln, das Ihnen nicht nur Ihre Ziele erreichen helfen, sondern auch Millionen Benutzern das Handling deutlich einfacher machen könnte.
 
-          p.p-accent Wir sind überzeugt, dass Softwarelösungen immer höheren Stellenwert gewinnen und durch die Optimierung und Automatisierung Ihrer Prozesse effizienter werden und Sie Kosten sparen.
+          p.p-accent(data-scroll="intro-second-bottom") Wir sind überzeugt, dass Softwarelösungen immer höheren Stellenwert gewinnen und durch die Optimierung und Automatisierung Ihrer Prozesse effizienter werden und Sie Kosten sparen.
 
   include ../slogan/_slogan

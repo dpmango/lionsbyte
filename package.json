@@ -43,6 +43,7 @@
     "picturefill": "^3.0.3",
     "scroll-lock": "^2.1.4",
     "scrollmagic": "^2.0.8",
+    "scrollmagic-plugin-gsap": "^1.0.4",
     "scrollmonitor": "^1.2.4",
     "surge": "^0.21.7",
     "svg4everybody": "^2.1.9",

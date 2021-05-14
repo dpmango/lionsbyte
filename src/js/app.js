@@ -27,9 +27,7 @@ var easingSwing = [0.02, 0.01, 0.47, 1]; // default jQuery easing
       app.initComponents();
     };
 
-    app.onLoadTrigger = function () {
-      APP.Components.Preloader.loaded();
-    };
+    app.onLoadTrigger = function () {};
 
     app.refresh = function () {
       APP.Plugins.Sharer.refresh();
@@ -57,6 +55,7 @@ var easingSwing = [0.02, 0.01, 0.47, 1]; // default jQuery easing
       APP.Browser().methods.setBodyTags();
       APP.Plugins.LegacySupport.init();
       APP.Plugins.ScrollBlock.listenScroll();
+      APP.Components.Preloader.init();
       APP.Plugins.Clicks.init();
 
       if (!APP.Components.Preloader) {
@@ -68,13 +67,13 @@ var easingSwing = [0.02, 0.01, 0.47, 1]; // default jQuery easing
     app.initPlugins = function (fromPjax) {
       APP.Plugins.Teleport.init();
       APP.Plugins.MicroModal.init(fromPjax);
-      APP.Plugins.Sliders.init(fromPjax);
+      // APP.Plugins.Sliders.init(fromPjax);
       APP.Plugins.Masks.init();
-      APP.Plugins.LazyLoadImages.init();
-      APP.Plugins.TextareaAutoExpand.init();
+      // APP.Plugins.LazyLoadImages.init();
+      // APP.Plugins.TextareaAutoExpand.init();
       APP.Plugins.Validations.init();
-      APP.Plugins.Tabs.init(fromPjax);
       APP.Plugins.LegacySupport.fixImages();
+      APP.Plugins.ScrollMagic.init(fromPjax);
 
       // APP.Plugins.ScrollReveal.init();
       // APP.Plugins.ScalerDesktop.init(fromPjax);
