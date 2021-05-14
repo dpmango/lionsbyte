@@ -70,31 +70,14 @@ var easingSwing = [0.02, 0.01, 0.47, 1]; // default jQuery easing
       APP.Plugins.MicroModal.init(fromPjax);
       APP.Plugins.Sliders.init(fromPjax);
       APP.Plugins.Masks.init();
-      APP.Plugins.Choises.init();
       APP.Plugins.LazyLoadImages.init();
       APP.Plugins.TextareaAutoExpand.init();
       APP.Plugins.Validations.init();
       APP.Plugins.Tabs.init(fromPjax);
-      APP.Plugins.Table.init(fromPjax);
-      APP.Plugins.DatePicker.init(fromPjax);
-      APP.Plugins.Upload.init(fromPjax);
       APP.Plugins.LegacySupport.fixImages();
 
       // APP.Plugins.ScrollReveal.init();
-      // APP.Plugins.Ymaps.init();
-      // APP.Plugins.Countdown.init();
-      // APP.Plugins.FooterReveal.init();
       // APP.Plugins.ScalerDesktop.init(fromPjax);
-
-      // plugins
-      // APP.Plugins.Sticky.init(fromPjax);
-      // APP.Plugins.Photoswipe.init(fromPjax);
-      // APP.Plugins.DatePicker.init(fromPjax);
-
-      // ui
-      // APP.Plugins.Clipboard.init();
-      // APP.Plugins.InputFocuses.init();
-      // APP.Plugins.Selectric.init();
     };
 
     // All components from `src/componenets`
