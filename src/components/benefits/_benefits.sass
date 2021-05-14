@@ -1,0 +1,53 @@
+// benefits
+.benefits
+  position: relative
+  &__background
+    position: absolute 0
+    z-index: 1
+    background: rgba(black, .3)
+    // transition: background .6s $ease
+    animation-name: benefitsBackground
+    animation-iteration-count: infinite
+    animation-timing-function: linear
+    animation-duration: 30s
+    animation-fill-mode: both
+
+  &__content-wrapper
+    margin-top: auto
+    margin-bottom: auto
+
+  &__subtitle
+    // p-label instance
+    text-align: center
+
+  &__box
+    position: relative
+    width: 100%
+    max-width: 830px
+    margin: 68px auto 0
+    padding: 72px 30px 42px
+    text-align: center
+    &--pink
+      background: linear-gradient(135deg, #6964DE 2.88%, #FCA6E9 100%)
+    &--teal
+      background: linear-gradient(317.11deg, #3980D5 -19.77%, #54FFAD 131.29%)
+    &--blue
+      background: linear-gradient(317.11deg, #8739D5 -19.77%, #044EA2 131.29%)
+
+  &__title
+    font-weight: 600
+    font-size: 96px
+    line-height: (113 / 96)
+
+  &__description
+    margin-top: 20px
+
+@keyframes benefitsBackground
+  0%
+    background: transparent
+  33.33%
+    background: linear-gradient(135deg, #6964DE 2.88%, #FCA6E9 100%)
+  66.66%
+    background: linear-gradient(317.11deg, #3980D5 -19.77%, #54FFAD 131.29%)
+  100%
+    background: transparent

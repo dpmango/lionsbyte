@@ -1,0 +1,89 @@
+// skiils
+.skiils
+  position: relative
+  overflow: hidden
+  &__top
+    // flex: 0 0 50%
+    margin-top: auto
+    text-align: center
+  &__contents
+    max-width: 886px
+    margin: 20px auto
+
+  &__ring
+    position: relative
+    width: 100%
+    min-width: 1px
+    max-width: 740px
+    // min-height: 320px
+    margin: auto auto 0
+  &__ring-radial
+    position: relative
+    z-index: 2
+    height: 80px
+    transform: translateX(-114px)
+
+  &__ring-text
+    position: absolute
+    z-index: 3
+    left: 0
+    right: 0
+    bottom: 60px
+    h4
+      maring: 0
+      font-size: 0
+      text-align: center
+      transition: font-size .25s $ease
+      &.is-active
+        font-size: 40px
+  &__icon
+    position: absolute
+    z-index: 2
+    top: 50%
+    left: 50%
+    flex: 0 0 calc(114px + 20px + 228px)
+    width: calc(114px + 20px + 228px)
+    height: 164px
+    min-width: 1px
+    transform-origin: center center
+    transform: rotate(0deg) translate3d(-50%,-50%, 0)
+    padding: 10px
+    will-change: transform
+    pointer-events: none
+    img, picture
+      max-width: 100%
+      transform-origin: center center
+
+
+$spinDistance: 360
+$spinTime: 20s
+
+@for $i from 1 through 10
+  .skiils__icon:nth-child(#{$i})
+    transform: rotate(#{($i - 1) * 36}deg) translate3d(-50%, -50%, 0)
+    animation-name: radialSpin-#{$i}
+    animation-iteration-count: infinite
+    animation-timing-function: linear
+    animation-duration: $spinTime
+    animation-fill-mode: both
+    img, picture
+      transform: rotate(#{($i - 1) * -36}deg) translate3d(-50%, -50%, 0)
+      animation-name: radialSpinImage-#{$i}
+      animation-iteration-count: infinite
+      animation-timing-function: linear
+      animation-duration: $spinTime
+      animation-fill-mode: both
+
+  @keyframes radialSpin-#{$i}
+    from
+      transform: rotate(#{($i - 1) * 36}deg) translate3d(-50%, -50%, 0)
+    to
+      transform: rotate(#{(($i - 1) * 36) + $spinDistance}deg) translate3d(-50%, -50%, 0)
+
+
+  @keyframes radialSpinImage-#{$i}
+    from
+      transform: rotate(#{($i - 1) * -36}deg) translate3d(-50%, -50%, 0)
+    to
+      transform: rotate(#{(($i - 1) * -36) - $spinDistance}deg) translate3d(-50%, -50%, 0)
+

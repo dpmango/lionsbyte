@@ -13,7 +13,6 @@ gulp.task('images', () => tBuild('images'));
 gulp.task('sprite:svg', tBuild('sprite-svg/sprite-svg'));
 gulp.task('sprite:png', () => tBuild('sprite-png/sprite-png'));
 gulp.task('copy', tBuild('copy'));
-gulp.task('index-page', () => tBuild('index/index-page'));
 
 gulp.task('sass:watch', tWatch('sass'));
 gulp.task('copy:watch', tWatch('copy'));
@@ -22,7 +21,6 @@ gulp.task('javascript:watch', tWatch('javascript'));
 gulp.task('images:watch', tWatch('images'));
 gulp.task('sprite:svg:watch', tWatch('sprite-svg/sprite-svg'));
 gulp.task('sprite:png:watch', tWatch('sprite-png/sprite-png'));
-gulp.task('index-page:watch', tWatch('index/index-page'));
 
 const setmodeProd = (done) => {
   config.setEnv('production');
@@ -46,7 +44,7 @@ const makeBuild = (mode) => {
     gulp.parallel('sprite:svg', 'sprite:png'),
     gulp.parallel('sass', 'javascript'),
     'pug',
-    gulp.parallel('images', 'copy', 'index-page')
+    gulp.parallel('images', 'copy')
   );
 };
 
@@ -62,8 +60,7 @@ gulp.task(
     'javascript:watch',
     'images:watch',
     'sprite:svg:watch',
-    'sprite:png:watch',
-    'index-page:watch'
+    'sprite:png:watch'
   )
 );
 

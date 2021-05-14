@@ -8,8 +8,6 @@ import Swiper, { Navigation, Pagination } from 'swiper';
 import AOS from 'aos';
 import validate from 'jquery-validation';
 import mask from 'jquery-mask-plugin';
-import Choices from 'choices.js';
-import Barba from 'barba.js';
 import Lazy from 'jquery-lazy';
 // import LazyAV from 'jquery-lazy/plugins/jquery.lazy.av.min.js';
 // import LazyPicture from 'jquery-lazy/plugins/jquery.lazy.picture.min.js';
@@ -18,20 +16,8 @@ import ScrollToPlugin from 'gsap/ScrollToPlugin';
 import debounce from 'lodash/debounce';
 import throttle from 'lodash/throttle';
 import { disablePageScroll, enablePageScroll, clearQueueScrollLocks } from 'scroll-lock';
-
-// uncomment plugins you want to use (i.e. from /js/__extras folder)
-
-// import scrollMonitor from 'scrollmonitor';
-// import sharer from 'sharer.js';
-// import ClipboardJS from 'clipboard';
-// import PhotoSwipe from 'photoswipe';
-// // eslint-disable-next-line camelcase
-// import PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default';
-import datepicker from 'air-datepicker';
-import datepickerEn from 'air-datepicker/dist/js/i18n/datepicker.en.js';
-// import autofillEvent from 'autofill-event';
-// import magnificPopup from 'magnific-popup';
-// import selectric from 'jquery-selectric';
+import bodymovin from 'lottie-web';
+import scrollMonitor from 'scrollmonitor';
 
 // expose imports to window to use in app.js
 // (jquery is exposed in expose-loader)
@@ -47,8 +33,7 @@ window.MicroModal = MicroModal;
 window.AOS = AOS;
 window.validate = validate;
 window.mask = mask;
-window.Choices = Choices;
-window.Barba = Barba;
+
 window.Lazy = Lazy;
 window.ScrollToPlugin = ScrollToPlugin;
 window.TweenMax = TweenMax;
@@ -58,16 +43,5 @@ window.throttle = throttle;
 window.disablePageScroll = disablePageScroll;
 window.enablePageScroll = enablePageScroll;
 window.clearQueueScrollLocks = clearQueueScrollLocks;
-
-// expose commented plugins
-
-// window.scrollMonitor = scrollMonitor;
-// window.sharer = sharer;
-// window.ClipboardJS = ClipboardJS;
-// window.PhotoSwipe = PhotoSwipe;
-// // eslint-disable-next-line camelcase
-// window.PhotoSwipeUI_Default = PhotoSwipeUI_Default;
-window.datepicker = datepicker;
-// window.autofillEvent = autofillEvent;
-// window.magnificPopup = magnificPopup;
-// window.selectric = selectric;
+window.bodymovin = bodymovin;
+window.scrollMonitor = scrollMonitor;
