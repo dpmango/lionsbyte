@@ -1,0 +1,64 @@
+#feedback.modal.micromodal-slide(aria-hidden='true')
+  .modal__overlay(tabindex='-1' data-micromodal-close)
+    .modal__container(role='dialog' aria-modal='true')
+      .modal__close(aria-label='Close modal' data-micromodal-close)
+        +svgMono('close')
+      .modal__header.tac
+        .h2-title Bereit Ihr Projekt zu starten?
+        p.p-main Wir wollen jedes Problem mit Intelligenz, Anmut und Schönheit lösen. Um loszulegen, müssen wir reden. Erzählen Sie uns ein wenig über Ihr Projekt oder Bedürfnisse und lassen Sie uns wissen, wie wir Kontakt aufnehmen können.
+      .modal__content.feedback-form
+        form(action="#").js-validate-form
+          .ui-group
+            label Neues Project:
+            .ui-checkbox-row
+              .ui-checkbox
+                input(type="checkbox" name="type" id="type_1")
+                label(for="type_1")
+                  span #Mobile Anwendung
+              .ui-checkbox
+                input(type="checkbox" name="type" id="type_2")
+                label(for="type_2")
+                  span #Webpage
+              .ui-checkbox
+                input(type="checkbox" name="type" id="type_3")
+                label(for="type_3")
+                  span #Programmierung
+              .ui-checkbox
+                input(type="checkbox" name="type" id="type_4")
+                label(for="type_4")
+                  span #Entwicklung
+              .ui-checkbox
+                input(type="checkbox" name="type" id="type_5")
+                label(for="type_5")
+                  span #Prozessanalyse
+              .ui-checkbox
+                input(type="checkbox" name="type" id="type_6")
+                label(for="type_6")
+                  span #Automatisierung
+              .ui-checkbox
+                input(type="checkbox" name="type" id="type_7")
+                label(for="type_7")
+                  span #Online Shop
+              .ui-checkbox
+                input(type="checkbox" name="type" id="type_8")
+                label(for="type_8")
+                  span #Web-Entwicklung
+
+
+          .ui-group
+            input.ui-input(type="text" id="name" placeholder="Ihr Vor- und Nachname" required)
+          .ui-group
+            input.ui-input(type="text" id="company" placeholder="Company Name")
+          .ui-group
+            input.ui-input(type="text" id="comment" placeholder="Ein kurzer Überblick über Ihr Projekt oder Bedürfnisse und ein ungefähres Budget")
+          .row
+            .col.col-6.col-sm-12
+              .ui-group
+                input.ui-input(type="email" id="email" placeholder="E-Mail" required)
+            .col.col-6.col-sm-12
+              .ui-group
+                input.ui-input(type="tel" id="phone" placeholder="Phone" required)
+
+          .feedback-form__cta
+            button(type="submit").btn.btn-primary
+              span Anfrage sende

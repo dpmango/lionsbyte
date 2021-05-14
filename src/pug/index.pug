@@ -4,6 +4,10 @@ title: Homepage
 extends shared/_layout
 block content
 
+  // preloader
+  include ../components/preloader/_preloader
+
+  // sections
   .scroll-magic
     .page__background
       include ../components/intro/background.svg
@@ -23,4 +27,6 @@ block content
     include ../components/skiils/_skiils
 
     include ../components/benefits/_benefits
+
+    include ../components/cta/_cta
 
