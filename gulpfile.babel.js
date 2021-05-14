@@ -43,8 +43,8 @@ const makeBuild = (mode) => {
     'clear',
     gulp.parallel('sprite:svg', 'sprite:png'),
     gulp.parallel('sass', 'javascript'),
-    'pug',
-    gulp.parallel('images', 'copy')
+    gulp.parallel('images', 'copy'),
+    'pug'
   );
 };
 

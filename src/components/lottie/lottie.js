@@ -6,9 +6,14 @@
 
 (function ($, APP) {
   APP.Components.Lottie = {
+    data: {
+      particles: null,
+      lion: null,
+    },
     init: function (fromPjax) {
       if (!fromPjax) {
         this.eventListeners();
+        this.watchViewport();
       }
 
       this.particles();
@@ -24,7 +29,8 @@
         path: 'json/lottie_2.json',
       });
 
-      animation.play();
+      // animation.play();
+      this.data.particles = animation;
 
       animation.addEventListener('data_ready', () => {
         this.setAR(animation);
@@ -38,7 +44,7 @@
       //   autoplay: false,
       //   path: 'json/lottie_lion.json',
       // });
-      // animation.play();
+      // this.data.lion = animation;
       // animation.addEventListener('data_ready', () => {
       //   this.setAR(animation);
       // });
@@ -48,6 +54,37 @@
 
       if (svg) {
         svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+      }
+    },
+    watchViewport: function () {
+      var _this = this;
+      var $particles = $('#lottie2');
+      var particlesWatcher = scrollMonitor.create($particles);
+
+      if ($particles.length && particlesWatcher) {
+        particlesWatcher.enterViewport(
+          throttle(
+            function () {
+              _this.data.particles.play();
+            },
+            100,
+            {
+              leading: true,
+            }
+          )
+        );
+
+        particlesWatcher.exitViewport(
+          throttle(
+            function () {
+              _this.data.particles.pause();
+            },
+            100,
+            {
+              leading: true,
+            }
+          )
+        );
       }
     },
   };
