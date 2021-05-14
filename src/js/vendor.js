@@ -18,6 +18,7 @@ import throttle from 'lodash/throttle';
 import { disablePageScroll, enablePageScroll, clearQueueScrollLocks } from 'scroll-lock';
 import bodymovin from 'lottie-web';
 import scrollMonitor from 'scrollmonitor';
+import scrollmagic from 'scrollmagic';
 
 // expose imports to window to use in app.js
 // (jquery is exposed in expose-loader)
@@ -45,3 +46,4 @@ window.enablePageScroll = enablePageScroll;
 window.clearQueueScrollLocks = clearQueueScrollLocks;
 window.bodymovin = bodymovin;
 window.scrollMonitor = scrollMonitor;
+window.scrollmagic = scrollmagic;

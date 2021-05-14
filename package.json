@@ -29,9 +29,7 @@
     }
   },
   "dependencies": {
-    "air-datepicker": "^2.2.3",
     "aos": "^2.3.4",
-    "autofill-event": "^0.0.1",
     "gsap": "^3.6.0",
     "jquery": "^3.5.1",
     "jquery-lazy": "^1.7.11",

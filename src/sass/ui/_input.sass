@@ -1,23 +1,39 @@
 // for input or textarea element
 .ui-input
+  position: relative
   -webkit-appearance: none
   display: block
   width: 100%
   background: transparent
-  font-family: $systemFont
-  font-size: 16px
-  color: $fontColor
-  border: 1px solid $borderColor
+  font-family: $baseFont
+  font-size: 14px
+  color: white
+  border: 0
   border-radius: 0px
-  padding: 15px 15px
+  border-bottom: 2px solid rgba(white, .1)
+  padding: 10px 0px
   transition: background
   transition: border .25s $ease, color .25s $ease, background .25s $ease
+  // &::after
+  //   display: inline-block
+  //   content: ' '
+  //   position: absolute
+  //   z-index: 2
+  //   bottom: 0
+  //   left: 0
+  //   right: 0
+  //   height: 2px
+  //   background: rgba(white, .1)
   &::placeholder
-    color: rgba($fontColor, 5)
+    color: rgba(white, 0.7)
   &:focus, &:active
-    background: white
+    border-color: rgba(white, .5)
+    &::after
+      background: linear-gradient(87.35deg, #8B53DA -0.82%, #FF003F 132.53%);
   &.has-error
     border-color: $colorRed
+    &::after
+      background: $colorRed
     &::placeholder
       color: rgba($colorRed, .5)
   &.js-datepicker
