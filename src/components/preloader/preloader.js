@@ -15,6 +15,10 @@
     },
     loaded: function () {
       $('body').addClass('is-preloaded');
+
+      setTimeout(() => {
+        APP.Plugins.AOS.init();
+      }, 500);
     },
     init: function (fromPjax) {
       this.getData();
@@ -43,7 +47,7 @@
         _data.images.push(img);
       }
 
-      _data.images[0].onload = this.render;
+      _data.images[0].onload = this.render.bind(this);
     },
     gsapAnimation: function () {
       var _this = this;
@@ -60,17 +64,19 @@
     render: function () {
       var _data = this.data;
 
-      _data.context.clearRect(0, 0, _data.canvas.width, _data.canvas.height);
-      this.canvasDrawImage(
-        _data.context,
-        _data.images[_data.preloader.frame],
-        0,
-        0,
-        _data.canvas.width,
-        _data.canvas.height,
-        0.5,
-        0.5
-      );
+      if (_data.context) {
+        _data.context.clearRect(0, 0, _data.canvas.width, _data.canvas.height);
+        this.canvasDrawImage(
+          _data.context,
+          _data.images[_data.preloader.frame],
+          0,
+          0,
+          _data.canvas.width,
+          _data.canvas.height
+          // 0.5,
+          // 0.5
+        );
+      }
     },
     canvasDrawImage: function (ctx, img, x, y, w, h, offsetX, offsetY) {
       if (arguments.length === 2) {
