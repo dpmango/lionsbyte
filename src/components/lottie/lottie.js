@@ -71,7 +71,6 @@
             scrollWatcher.enterViewport(
               throttle(
                 function () {
-                  console.log('lootie entered viewport');
                   _this.data[dataKey].play();
                 },
                 100,

@@ -13,31 +13,6 @@
         $('body').addClass('no-scroll-trigger');
       }
     },
-    scrollmagic: function () {
-      // init controller
-      var controller = new ScrollMagic.Controller();
-
-      // create a scene
-      const $intro = $('.intro');
-      if ($intro.length > 0) {
-        const infoScene = new ScrollMagic.Scene({
-          duration: $intro.height() - window.innerHeight,
-          offset: 0,
-        })
-          .setTween('[data-scroll="intro-2"]', 0.5, { backgroundColor: 'green' })
-          .addIndicators({ name: '1 (duration: 0)' }); // add indicators (requires plugin)
-
-        infoScene.on('enter', function (event) {
-          $('.intro').find('[data-aos]').addClass('aos-animate');
-        });
-
-        infoScene.on('progress', function (event) {
-          console.log('infoScene progress', event.progress);
-        });
-
-        controller.addScene(infoScene);
-      }
-    },
     scrollTrigger: function () {
       const buildParams = (custom) => {
         const params = {
@@ -49,6 +24,8 @@
             indent: 20,
           },
           scrub: 1,
+          start: 'top top',
+          end: 'bottom bottom',
         };
 
         return { ...params, ...custom };
@@ -63,8 +40,6 @@
         let timeline = gsap.timeline({
           scrollTrigger: buildParams({
             trigger: section('intro-first'),
-            start: 'top top',
-            end: 'bottom bottom',
             pin: `${section('intro-first')} .container`,
             // snap: {
             //   snapTo: 'labels', // snap to the closest label in the timeline
@@ -73,16 +48,16 @@
             //   ease: 'power1.inOut', // the ease of the snap animation ("power3" by default)
             // },
             onToggle: (self) => console.log('toggled, isActive:', self.isActive),
-            onUpdate: (self) => {
-              console.log(
-                'progress:',
-                self.progress.toFixed(3),
-                'direction:',
-                self.direction,
-                'velocity',
-                self.getVelocity()
-              );
-            },
+            // onUpdate: (self) => {
+            //   console.log(
+            //     'progress:',
+            //     self.progress.toFixed(3),
+            //     'direction:',
+            //     self.direction,
+            //     'velocity',
+            //     self.getVelocity()
+            //   );
+            // },
           }),
         });
 
@@ -94,8 +69,6 @@
         let timeline_2 = gsap.timeline({
           scrollTrigger: buildParams({
             trigger: section('intro-second'),
-            start: 'top top',
-            end: 'bottom bottom',
             pin: `${section('intro-second')} .container`,
           }),
         });
@@ -103,8 +76,50 @@
         timeline_2
           .from(scroll('intro-second-top'), { y: 100 }, 0)
           .from(scroll('intro-second-bottom'), { y: -100 }, 0);
+
+        // LION
+        let timeline_lion = gsap.timeline({
+          scrollTrigger: buildParams({
+            trigger: section('overlay-lion'),
+            pin: `${section('overlay-lion')} .lottie`,
+            onUpdate: (self) => {
+              const lionLootie = APP.Components.Lottie.data.lion;
+              const totalFrames = lionLootie.totalFrames;
+              const curFrame = Math.floor(totalFrames * self.progress);
+
+              if (curFrame > 0 && curFrame < totalFrames) {
+                lionLootie.goToAndStop(curFrame, true);
+              }
+            },
+          }),
+        });
       }
     },
+    // scrollmagic: function () {
+    //   // init controller
+    //   var controller = new ScrollMagic.Controller();
+
+    //   // create a scene
+    //   const $intro = $('.intro');
+    //   if ($intro.length > 0) {
+    //     const infoScene = new ScrollMagic.Scene({
+    //       duration: $intro.height() - window.innerHeight,
+    //       offset: 0,
+    //     })
+    //       .setTween('[data-scroll="intro-2"]', 0.5, { backgroundColor: 'green' })
+    //       .addIndicators({ name: '1 (duration: 0)' }); // add indicators (requires plugin)
+
+    //     infoScene.on('enter', function (event) {
+    //       $('.intro').find('[data-aos]').addClass('aos-animate');
+    //     });
+
+    //     infoScene.on('progress', function (event) {
+    //       console.log('infoScene progress', event.progress);
+    //     });
+
+    //     controller.addScene(infoScene);
+    //   }
+    // },
   };
 })(jQuery, window.APP);
 
