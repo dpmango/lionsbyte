@@ -5,10 +5,12 @@
 (function ($, APP) {
   APP.Plugins.ScrollMagic = {
     init: function (fromPjax) {
-      if (window.location.hash === '#scroll') {
+      if (APP.Plugins.URL.data.scroll !== 'false') {
         $('body').addClass('scroll-trigger-working');
         // this.scrollmagic()
         this.scrollTrigger();
+      } else {
+        $('body').addClass('no-scroll-trigger');
       }
     },
     scrollmagic: function () {

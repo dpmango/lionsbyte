@@ -55,12 +55,9 @@ var easingSwing = [0.02, 0.01, 0.47, 1]; // default jQuery easing
       APP.Browser().methods.setBodyTags();
       APP.Plugins.LegacySupport.init();
       APP.Plugins.ScrollBlock.listenScroll();
+      APP.Plugins.URL.init();
       APP.Components.Preloader.init();
       APP.Plugins.Clicks.init();
-
-      // if (!APP.Components.Preloader) {
-      //   APP.Plugins.AOS.init();
-      // }
     };
 
     // Plugins which depends on DOM and page content
@@ -73,7 +70,7 @@ var easingSwing = [0.02, 0.01, 0.47, 1]; // default jQuery easing
       // APP.Plugins.TextareaAutoExpand.init();
       APP.Plugins.Validations.init();
       APP.Plugins.LegacySupport.fixImages();
-      // APP.Plugins.ScrollMagic.init(fromPjax);
+      APP.Plugins.ScrollMagic.init(fromPjax);
 
       // APP.Plugins.ScrollReveal.init();
       // APP.Plugins.ScalerDesktop.init(fromPjax);

@@ -9,9 +9,12 @@ html(lang="en")
       include ../../../dist/img/sprite-color.svg
       include ../../../dist/img/sprite-mono.svg
 
-    .page(class=outClass)
+    // preloader
+    include ../../components/preloader/_preloader
+
+    .page
       block header
-      include ../../components/header/_header
+        include ../../components/header/_header
 
       .page__content
         block content

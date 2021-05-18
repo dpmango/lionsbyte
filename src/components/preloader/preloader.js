@@ -21,10 +21,15 @@
       }, 500);
     },
     init: function (fromPjax) {
-      this.getData();
-      this.loadFrames();
-      this.gsapAnimation();
-      this.resize();
+      if (APP.Plugins.URL.data.preloader !== 'false') {
+        this.getData();
+        this.loadFrames();
+        this.gsapAnimation();
+        this.resize();
+      } else {
+        $('body').addClass('no-preloader');
+        APP.Plugins.AOS.init();
+      }
     },
     getData: function () {
       const canvas = document.getElementById('preloader');
@@ -72,9 +77,9 @@
           0,
           0,
           _data.canvas.width,
-          _data.canvas.height
-          // 0.5,
-          // 0.5
+          _data.canvas.height,
+          0.5,
+          1
         );
       }
     },

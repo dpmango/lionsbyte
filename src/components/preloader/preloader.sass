@@ -2,9 +2,10 @@
 .preloader
   position: fixed 0
   z-index: 9
-  background: transparent
+  background: url('../../img/preloader/Lion_byte_4_2_00000.png') no-repeat center bottom
+  background-size: cover
   pointer-events: all
-  transition: opacity .1s .4s $ease
+  transition: opacity .25s $ease
   will-change: opacity
   backface-visibility: hidden
   overflow-y: auto
@@ -12,8 +13,22 @@
     width: 100%
     height: 100vh
 
+
+.page
+  opacity: 0
+  will-change: opacity
+  pointer-events: none
+  transition: opacity .25s $ease
+
 // barba wrapper
-.is-preloaded
+.no-preloader
+  .preloader, .page
+  transition: none
+
+.is-preloaded, .no-preloader
   .preloader
     opacity: 0
     pointer-events: none
+  .page
+    opacity: 1
+    pointer-events: auto
