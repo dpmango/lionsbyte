@@ -10,7 +10,7 @@ const copyVideo = () => gulp.src(config.src.video + '/*.*').pipe(gulp.dest(confi
 
 const copyPhp = () => gulp.src(config.src.php + '/*.*').pipe(gulp.dest(config.dest.php));
 
-const copyJson = () => gulp.src(config.src.json + '/*.*').pipe(gulp.dest(config.dest.json));
+const copyJson = () => gulp.src(config.src.json + '/**/*.*').pipe(gulp.dest(config.dest.json));
 
 const copyTask = () => gulp.parallel(copyRootfiles, copyFonts, copyVideo, copyPhp, copyJson);
 
@@ -19,7 +19,7 @@ const watch = () => () => {
   gulp.watch(config.src.fonts + '/*.{woff,woff2,ttf,eot,svg}', copyFonts);
   gulp.watch(config.src.video + '/*.*', copyVideo);
   gulp.watch(config.src.php + '/*.*', copyPhp);
-  gulp.watch(config.src.json + '/*.*', copyJson);
+  gulp.watch(config.src.json + '/**/*.*', copyJson);
 };
 
 module.exports.build = copyTask;

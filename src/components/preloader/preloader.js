@@ -1,16 +1,31 @@
+/* eslint-disable no-console */
 //////////
 // Preloader
 //////////
 (function ($, APP) {
   APP.Components.Preloader = {
+    debug: {
+      start: Date.now(),
+    },
     data: {
       canvas: null,
       context: null,
       resolution: 1,
-      frameCount: 261,
+      frameCount: {
+        starter: 55,
+        total: 261,
+      },
       images: [],
       preloader: {
         frame: 0,
+      },
+      imagesLoaded: {
+        starter: false,
+        total: false,
+      },
+      playbackState: {
+        starter: false,
+        total: false,
       },
     },
     loaded: function () {
@@ -24,8 +39,12 @@
       if (APP.Plugins.URL.data.preloader !== 'false') {
         this.getData();
         this.loadFrames();
-        this.gsapAnimation();
+        // this.gsapAnimation();
         this.resize();
+
+        if (!fromPjax) {
+          this.listenResize();
+        }
       } else {
         $('body').addClass('no-preloader');
         APP.Plugins.AOS.init();
@@ -40,30 +59,116 @@
       this.data.context = context;
       this.data.resolution = resolution;
     },
+    listenResize: function () {
+      _window.on('resize', debounce(this.resize.bind(this), 100));
+    },
     loadFrames: function () {
+      var _this = this;
       var _data = this.data;
-      const currentFrame = (index) =>
-        `/img/preloader/Lion_byte_4_2_${index.toString().padStart(5, '0')}.png`;
+      // const currentFrame = (index) =>
+      //   `/img/preloader/Lion_byte_4_2_${index.toString().padStart(5, '0')}.png`;
 
-      // preload
-      for (let i = 0; i < _data.frameCount; i++) {
-        const img = new Image();
-        img.src = currentFrame(i);
-        _data.images.push(img);
+      const currentFrame = (index) =>
+        `https://res.cloudinary.com/dqruxbmfq/image/upload/v1621367612/lion-loader/Lion_byte_4_2_${index
+          .toString()
+          .padStart(5, '0')}.png`;
+
+      // create images
+      let imagesUrlsStarter = [];
+      let imageUrlsAll = [];
+      for (let i = 0; i <= _data.frameCount.starter; i++) {
+        imagesUrlsStarter.push(currentFrame(i));
       }
 
-      _data.images[0].onload = this.render.bind(this);
+      for (let i = _data.frameCount.starter; i <= _data.frameCount.total; i++) {
+        imageUrlsAll.push(currentFrame(i));
+      }
+
+      // images loader function
+      function loadImages(imageUrlArray) {
+        const promiseArray = [];
+
+        for (let imageUrl of imageUrlArray) {
+          promiseArray.push(
+            new Promise((resolve) => {
+              const img = new Image();
+
+              img.onload = function () {
+                resolve();
+              };
+
+              img.src = imageUrl;
+              _data.images.push(img);
+            })
+          );
+        }
+
+        return Promise.all(promiseArray).then(() => {
+          return _data.images;
+        });
+      }
+
+      // load starter images and start animation
+      // when the rest is loaded and animation compleate, start second (longer) part
+      loadImages(imagesUrlsStarter).then((images) => {
+        console.log(
+          `Preloader starter loaded in: ${((Date.now() - _this.debug.start) / 1000).toFixed(2)} s`
+        );
+        _data.imagesLoaded.starter = true;
+
+        _this.gsapAnimationStart().then(() => {
+          _data.playbackState.starter = true;
+
+          var ticker = setInterval(readyChecker, 100);
+          function readyChecker() {
+            if (_data.imagesLoaded.total) {
+              _this.gsapAnimationAll();
+              clearInterval(ticker);
+            }
+          }
+        });
+      });
+
+      loadImages(imageUrlsAll).then((images) => {
+        console.log(
+          `Preloader all loaded in: ${((Date.now() - _this.debug.start) / 1000).toFixed(2)} s`
+        );
+
+        _data.imagesLoaded.total = true;
+      });
+
+      // _data.images[0].onload = this.render.bind(this);
     },
-    gsapAnimation: function () {
+    gsapAnimationStart: function () {
       var _this = this;
       var _data = this.data;
 
-      gsap.to(_data.preloader, 8.7, {
-        frame: _data.frameCount - 1,
+      return new Promise((resolve) => {
+        gsap.to(_data.preloader, _data.frameCount.starter / 30, {
+          frame: _data.frameCount.starter,
+          snap: 'frame',
+          ease: 'Power0.none',
+          onUpdate: () => _this.render(),
+          onComplete: resolve,
+        });
+
+        return;
+      });
+    },
+
+    gsapAnimationAll: function () {
+      var _this = this;
+      var _data = this.data;
+
+      gsap.to(_data.preloader, (_data.frameCount.total - _data.frameCount.starter) / 30, {
+        frame: _data.frameCount.total,
         snap: 'frame',
         ease: 'Power0.none',
         onUpdate: () => _this.render(),
-        onComplete: () => APP.Components.Preloader.loaded(),
+        onComplete: () => {
+          APP.Components.Preloader.loaded();
+          _data.playbackState.total = true;
+        },
       });
     },
     render: function () {
