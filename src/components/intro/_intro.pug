@@ -1,7 +1,7 @@
 // INTRO
 .intro
   section.section.section--h3(data-section="intro-first")
-    .intro__wrapper
+    .intro__top(data-pin)
       .intro__left-col.clip-1
         .row.no-pad
           .col.col-6
@@ -21,11 +21,10 @@
 
   section.section.section--h2(data-section="intro-second")
     .container.container--1000
-      .intro__content-wrapper
-        .intro__horizontal-text
-          // TODO mask, add aos
+      .intro__bottom(data-pin)
+        .intro__bottom-box.intro__bottom-box--first
           p.p-main(data-scroll="intro-second-top") Unser Leitbild ist ein kühnes, modernes und benutzerfreundliches Software-Produkt zu entwickeln, das Ihnen nicht nur Ihre Ziele erreichen helfen, sondern auch Millionen Benutzern das Handling deutlich einfacher machen könnte.
-
+        .intro__bottom-box.intro__bottom-box--second
           p.p-accent(data-scroll="intro-second-bottom") Wir sind überzeugt, dass Softwarelösungen immer höheren Stellenwert gewinnen und durch die Optimierung und Automatisierung Ihrer Prozesse effizienter werden und Sie Kosten sparen.
 
   include ../slogan/_slogan

@@ -1,7 +1,7 @@
 // INTRO
 .intro
   position: relative
-  &__wrapper
+  &__top, &__bottom
     position: relative
     height: 100vh
     display: flex
@@ -26,10 +26,25 @@
     text-align: right
     transform: translateY(-2em)
 
-  &__horizontal-text
+  // &__bottom
+
+  &__bottom-box
+    position: absolute
+    z-index: 2
+    top: 0
+    left: 0
+    right: 0
+    height: 50vh
+    display: flex
+    flex-direction: column
     text-align: center
-    .p-accent
-      margin-top: 60px
+    padding: 30px 0
+    overflow: hidden
+    &--first
+      justify-content: flex-end
+    &--second
+      top: auto
+      bottom: 0
 
   &__slogan
     margin-top: auto
