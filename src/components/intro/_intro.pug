@@ -1,20 +1,23 @@
 // INTRO
 .intro
-  section.section.section--h2(data-section="intro-first")
-    .container
-      .row.intro__content-wrapper
-        .col.col-6(data-aos="fade-up")
-          .intro__name(data-scroll="intro-name")
-            +svgColor('strong_name')
-        .col.col-6(data-aos="fade-up")
-          p.p-main(data-scroll="intro-text")
-            | entwickelt individuelle Softwarelösungen,
-            br
-            | das sind fantastisch erfolgreiche Lösungen
-            br
-            | durch ein abgestimmtes Zusammenspiel von Programmierung,
-            br
-            | Optimierung und Prozessautomatisierung.
+  section.section.section--h3(data-section="intro-first")
+    .intro__wrapper
+      .intro__left-col.clip-1
+        .row.no-pad
+          .col.col-6
+            .intro__name(data-scroll="intro-name")
+              +svgColor('strong_name')
+      .intro__right-col.clip-2
+        .row.no-pad
+          .col.col-6.col-offset-6
+            p.p-main(data-scroll="intro-text")
+              | entwickelt individuelle Softwarelösungen,
+              br
+              | das sind fantastisch erfolgreiche Lösungen
+              br
+              | durch ein abgestimmtes Zusammenspiel von Programmierung,
+              br
+              | Optimierung und Prozessautomatisierung.
 
   section.section.section--h2(data-section="intro-second")
     .container.container--1000

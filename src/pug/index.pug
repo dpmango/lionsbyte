@@ -4,10 +4,14 @@ title: Homepage
 extends shared/_layout
 block content
 
+  // dev
+  .dev-center-line
+
   // sections
   .scroll-magic
     .page__background
-      include ../components/intro/background.svg
+      .page__background-wrapper
+        include ../icons/svg-inline/background.svg
 
     include ../components/intro/_intro
 

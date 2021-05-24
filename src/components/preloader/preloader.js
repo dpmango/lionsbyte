@@ -110,6 +110,7 @@
 
       // load starter images and start animation
       // when the rest is loaded and animation compleate, start second (longer) part
+      // images are loaded in 2 virtual streams (second should not wait till first animation compleate)
       loadImages(imagesUrlsStarter).then((images) => {
         console.log(
           `Preloader starter loaded in: ${((Date.now() - _this.debug.start) / 1000).toFixed(2)} s`

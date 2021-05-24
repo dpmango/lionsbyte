@@ -18,6 +18,10 @@
   display: flex
   flex-wrap: wrap
   margin: -$gutter
+  &.no-pad
+    margin: 0
+    .col
+      padding: 0
 
 .col
   display: flex
@@ -75,6 +79,9 @@
   flex-basis: $col12
   max-width: $col12
 
+.col-offset-6
+  margin-left: $col6
+
 // responsive (desktop first)
 $sizes: ("xl": $xl, "lg": $lg, "md": $md, "sm": $sm);
 
@@ -119,3 +126,6 @@ $sizes: ("xl": $xl, "lg": $lg, "md": $md, "sm": $sm);
     .col-#{$size}-auto
       flex-basis: auto
       max-width: min-content
+
+    .col-offset-#{$size}-6
+      margin-left: $col6

@@ -11,13 +11,15 @@
       lion: null,
     },
     init: function (fromPjax) {
-      if (!fromPjax) {
-        this.eventListeners();
-        this.watchViewport();
-      }
+      if (APP.Plugins.URL.data.lottie !== 'false') {
+        if (!fromPjax) {
+          this.eventListeners();
+          this.watchViewport();
+        }
 
-      this.particles();
-      this.lion();
+        this.particles();
+        this.lion();
+      }
     },
     eventListeners: function () {},
     particles: function () {

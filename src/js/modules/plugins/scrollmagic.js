@@ -40,14 +40,13 @@
         let timeline = gsap.timeline({
           scrollTrigger: buildParams({
             trigger: section('intro-first'),
-            pin: `${section('intro-first')} .container`,
+            pin: `${section('intro-first')} .intro__wrapper`,
             // snap: {
             //   snapTo: 'labels', // snap to the closest label in the timeline
             //   duration: { min: 0.2, max: 3 }, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
             //   delay: 0.2, // wait 0.2 seconds from the last scroll event before doing the snapping
             //   ease: 'power1.inOut', // the ease of the snap animation ("power3" by default)
             // },
-            onToggle: (self) => console.log('toggled, isActive:', self.isActive),
             // onUpdate: (self) => {
             //   console.log(
             //     'progress:',
@@ -62,8 +61,8 @@
         });
 
         timeline
-          .from(scroll('intro-name'), { x: 200 }, 0)
-          .from(scroll('intro-text'), { x: -200 }, 0);
+          .from(scroll('intro-name'), { x: 400 }, 0)
+          .from(scroll('intro-text'), { x: -600 }, 0);
 
         // SECOND
         let timeline_2 = gsap.timeline({
